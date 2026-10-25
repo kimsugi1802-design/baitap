@@ -3,30 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Web Design Final Project - Mai Phương</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Responsive Web Design - Mai Phương</title>
+    <style>
+        /* Reset cơ bản */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f7f5f0; /* Tông beige nhẹ nhàng sang chảnh */
+            color: #2c2c2c;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin: 30px 0 40px 0;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #5c4d3c;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #777;
+            font-size: 1rem;
+        }
+
+        /* Container chính chứa các box */
+        .wrapper {
+            display: flex;
+            flex-direction: column; /* Mặc định trên di động: xếp dọc 1 cột */
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Các khối div nội dung */
+        .card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 15px;
+            max-height: 250px;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            color: #444;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* --- MEDIA QUERY 1: MÁY TÍNH BẢNG (Từ 772px trở lên) -> Chuyển thành 2 cột --- */
+        @media screen and (min-width: 772px) {
+            .wrapper {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .card {
+                width: 48%; /* Hai card đứng cạnh nhau (khoảng 48% mỗi bên) */
+            }
+
+            .card img {
+                max-height: 30vh; /* Ảnh không quá 30% chiều cao khung hình đúng ý đề bài */
+            }
+        }
+
+        /* --- MEDIA QUERY 2: MÀN HÌNH LỚN (Từ 998px trở lên) -> Chuyển thành 3 cột --- */
+        @media screen and (min-width: 998px) {
+            .card {
+                width: 31.5%; /* Ba card đứng cạnh nhau hoàn hảo */
+            }
+        }
+    </style>
 </head>
 <body>
 
     <header>
         <h1>Dự án Responsive Web Design</h1>
-        <p class="subtitle">Thực hành bố cục linh hoạt qua các điểm ngắt (Breakpoints)</p>
+        <p>Giao diện tự động co giãn mượt mà từ Mobile lên Desktop</p>
     </header>
-    
-    <div class="container">
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Camera Collection">
-            <p><strong>Khoảnh khắc số 1:</strong> Giao diện tự động co giãn linh hoạt, chuẩn bị chuyển sang dạng lưới ngang khi màn hình rộng hơn.</p>
+
+    <div class="wrapper">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Card 1">
+            <h3>Giao diện Di động</h3>
+            <p>Mặc định trên màn hình nhỏ, các khối sẽ xếp dọc thẳng hàng xuống dưới để dễ cuộn xem.</p>
         </div>
 
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Lifestyle Aesthetics">
-            <p><strong>Khoảnh khắc số 2:</strong> Tối ưu hóa hiển thị ảnh và khối nội dung theo tiêu chuẩn thiết kế hiện đại, mượt mà trên mọi thiết bị.</p>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Card 2">
+            <h3>Chế độ Máy tính bảng</h3>
+            <p>Khi màn hình đạt từ 772px trở lên, bố cục tự động bẻ ngang thành 2 cột cân đối.</p>
         </div>
 
-        <div class="item">
-            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=600&q=80" alt="Creative Workspace">
-            <p><strong>Khoảnh khắc số 3:</strong> Hoàn thiện cấu trúc ba cột ấn tượng khi hiển thị trên màn hình lớn (Desktop view).</p>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=600&q=80" alt="Card 3">
+            <h3>Chế độ Màn hình lớn</h3>
+            <p>Vượt mốc 998px, hệ thống chuyển sang lưới 3 cột hoàn chỉnh, hiển thị cực kỳ sang xịn mịn.</p>
         </div>
     </div>
 
